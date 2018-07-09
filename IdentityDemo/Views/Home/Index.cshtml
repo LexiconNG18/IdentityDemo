@@ -1,0 +1,19 @@
+﻿@using Microsoft.AspNet.Identity
+@using IdentityDemo.Models
+
+<h2>Home: @ViewBag.Title</h2>
+
+@if (Request.IsAuthenticated)
+{
+    <p>User: <b>@User.Identity.GetUserName()</b></p>
+
+    <p>Roles: </p>
+    <ul>
+        @if (User.IsInRole("Editor")) { <li>Role: Editor</li> }
+        @if (User.IsInRole("Admin"))  { <li>Role: Admin </li> }
+    </ul>
+}
+else
+{
+    <p>Not logged in</p>
+}
